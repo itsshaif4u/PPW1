@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Pulse — Case Study</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=General+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --grey-100: #F5F5F5;
+            --grey-200: #E5E5E5;
+            --grey-400: #A3A3A3;
+            --grey-600: #525252;
+            --grey-900: #171717;
+            --orange: #FF4000;
+            --blue: #00BFFF;
+            --blue-dark: #0099CC;
+        }
+
+        body {
+            font-family: 'General Sans', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.7;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--black);
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--grey-600);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--black);
+        }
+
+        /* Hero Section */
+        .case-hero {
+            padding: 6rem 3rem 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .hero-category {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-description {
+            font-size: 1.4rem;
+            color: var(--grey-600);
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            max-width: 800px;
+        }
+
+        .hero-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            color: var(--grey-600);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        /* Project Visual */
+        .project-visual {
+            width: 100%;
+            height: 600px;
+            background: var(--blue-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 3rem 0;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .visual-placeholder {
+            font-size: 10rem;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Content Container */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 3rem 6rem;
+        }
+
+        .section {
+            margin: 5rem 0;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--grey-600);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-content {
+            font-size: 1.1rem;
+            color: var(--grey-600);
+            line-height: 1.9;
+        }
+
+        .section-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .col-card {
+            background: var(--grey-100);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .col-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .col-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .col-card li {
+            padding: 0.75rem 0;
+            color: var(--grey-600);
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .col-card li:last-child {
+            border-bottom: none;
+        }
+
+        .col-card li::before {
+            content: '→';
+            margin-right: 0.75rem;
+            color: var(--black);
+            font-weight: 700;
+        }
+
+        /* Insights Grid */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .insight-card {
+            background: var(--white);
+            border: 1px solid var(--grey-200);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .insight-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.75rem;
+            line-height: 1;
+        }
+
+        .insight-text {
+            color: var(--grey-600);
+            line-height: 1.7;
+        }
+
+        /* Quote Block */
+        .quote-block {
+            background: var(--black);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            color: var(--grey-400);
+            font-size: 1rem;
+        }
+
+        /* Process Steps */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .process-step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--black);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            color: var(--grey-600);
+        }
+
+        /* Screen Showcase */
+        .screen-showcase {
+            background: var(--grey-100);
+            padding: 3rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .screen-visual {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--white);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            border: 1px solid var(--grey-200);
+        }
+
+        .screen-caption {
+            text-align: center;
+            color: var(--grey-600);
+            font-size: 0.95rem;
+        }
+
+        /* Design System */
+        .design-system {
+            background: var(--white);
+            border: 1px solid var(--grey-200);
+            padding: 3rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+        }
+
+        .color-swatches {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .swatch {
+            text-align: center;
+        }
+
+        .swatch-color {
+            height: 100px;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--grey-200);
+        }
+
+        .swatch-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .swatch-value {
+            font-size: 0.85rem;
+            color: var(--grey-600);
+            font-family: 'Space Grotesk', monospace;
+        }
+
+        /* Impact Metrics */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 3rem;
+            background: var(--black);
+            color: var(--white);
+            border-radius: 8px;
+        }
+
+        .impact-item {
+            text-align: center;
+        }
+
+        .impact-metric {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-metric.orange {
+            color: var(--orange);
+        }
+
+        .impact-label {
+            color: var(--grey-400);
+            font-size: 0.9rem;
+        }
+
+        /* Learnings */
+        .learnings-list {
+            background: var(--grey-100);
+            padding: 2.5rem;
+            border-radius: 8px;
+        }
+
+        .learnings-list ul {
+            list-style: none;
+        }
+
+        .learnings-list li {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--grey-200);
+            color: var(--grey-600);
+            line-height: 1.8;
+        }
+
+        .learnings-list li:last-child {
+            border-bottom: none;
+        }
+
+        .learnings-list li strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* Next Project */
+        .next-project {
+            margin: 6rem 0 3rem;
+            padding: 3rem;
+            background: var(--grey-100);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .next-project h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .next-project p {
+            color: var(--grey-600);
+            margin-bottom: 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--grey-900);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--black);
+            border: 2px solid var(--black);
+        }
+
+        .btn-secondary:hover {
+            background: var(--black);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            padding: 3rem;
+            border-top: 1px solid var(--grey-200);
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--grey-600);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-meta,
+            .two-col,
+            .insights-grid,
+            .process-grid,
+            .color-swatches,
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 0 1.5rem 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index-redesigned.html" class="logo">SHAIF ALAM</a>
+        <a href="index-redesigned.html#work" class="back-link">← Back to Work</a>
+    </nav>
+
+    <div class="case-hero">
+        <span class="hero-category">Dashboard Design · Data Visualization</span>
+        <h1 class="hero-title">Finance Pulse</h1>
+        <p class="hero-description">
+            Personal financial management dashboard that simplifies complex financial data through strategic information hierarchy, clean data visualization, and user-centered design.
+        </p>
+        <div class="hero-meta">
+            <div class="meta-item">
+                <span class="meta-label">Role</span>
+                <span class="meta-value">UI/UX Designer</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Timeline</span>
+                <span class="meta-value">3 Weeks</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Platform</span>
+                <span class="meta-value">Web Dashboard</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Tools</span>
+                <span class="meta-value">Figma, Miro</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="project-visual">
+        <div class="visual-placeholder">💰</div>
+    </div>
+
+    <div class="content">
+        <div class="section">
+            <span class="section-label">Context</span>
+            <h2 class="section-title">The Challenge</h2>
+            <div class="section-content">
+                <p>
+                    <strong>Personal finance apps are overwhelming.</strong> Users face cluttered interfaces packed with numbers, graphs, and features they don't understand. The result? Financial anxiety instead of financial clarity.
+                </p>
+                <p>
+                    Finance Pulse was designed to solve this problem: how do we help people understand their financial health at a glance, while still providing depth when they need it?
+                </p>
+            </div>
+
+            <div class="two-col">
+                <div class="col-card">
+                    <h3>Problems Identified</h3>
+                    <ul>
+                        <li>Too much data, poor hierarchy</li>
+                        <li>Unclear visual language</li>
+                        <li>Cognitive overload on first view</li>
+                        <li>No clear financial insights</li>
+                        <li>Mobile experience inadequate</li>
+                    </ul>
+                </div>
+                <div class="col-card">
+                    <h3>Design Goals</h3>
+                    <ul>
+                        <li>Balance visibility at a glance</li>
+                        <li>Clear data visualization</li>
+                        <li>Reduce decision paralysis</li>
+                        <li>Enable quick actions</li>
+                        <li>Mobile-first responsive</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <span class="section-label">Research</span>
+            <h2 class="section-title">User Insights</h2>
+            <div class="section-content">
+                <p>
+                    I conducted interviews with <strong>5 financial app users</strong> to understand their pain points, behaviors, and needs. The research revealed clear patterns about what makes or breaks a financial dashboard.
+                </p>
+            </div>
+
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-number">01</div>
+                    <p class="insight-text">Users scan balance first—everything else is secondary context</p>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-number">02</div>
+                    <p class="insight-text">Visual charts preferred over numerical tables for spending patterns</p>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-number">03</div>
+                    <p class="insight-text">Red/green color coding provides instant overspending feedback</p>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-number">04</div>
+                    <p class="insight-text">Month-to-month comparison critical for financial planning</p>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <p class="quote-text">"I don't want to think. I just want to open the app and immediately know: Am I overspending? Do I have enough saved?"</p>
+                <p class="quote-author">— Research participant, 28-year-old software engineer</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <span class="section-label">Process</span>
+            <h2 class="section-title">Design Approach</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Research</div>
+                    <p class="step-description">User interviews, competitive analysis</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Structure</div>
+                    <p class="step-description">Information architecture, card sorting</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Design</div>
+                    <p class="step-description">Wireframes, visual design, prototyping</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Test</div>
+                    <p class="step-description">Usability testing, iterations</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <span class="section-label">Solution</span>
+            <h2 class="section-title">Key Design Decisions</h2>
+            <div class="section-content">
+                <p>
+                    <strong>Visual Hierarchy</strong> — Total balance dominates the screen at 48px, while supporting data scales down progressively. This mirrors how users actually scan financial information.
+                </p>
+                <p>
+                    <strong>Color as Language</strong> — Green for income/savings, red for overspending, blue for neutral data. No guessing, instant understanding.
+                </p>
+                <p>
+                    <strong>Progressive Disclosure</strong> — Overview first, details on demand. Users can drill down into categories without being overwhelmed upfront.
+                </p>
+            </div>
+
+            <div class="screen-showcase">
+                <div class="screen-visual">📊</div>
+                <p class="screen-caption">Dashboard Overview — Balance, trends, and quick actions at a glance</p>
+            </div>
+
+            <div class="screen-showcase">
+                <div class="screen-visual">📈</div>
+                <p class="screen-caption">Analytics View — Spending breakdown by category with visual comparisons</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <span class="section-label">System</span>
+            <h2 class="section-title">Design System</h2>
+            <div class="design-system">
+                <h3 style="margin-bottom: 1.5rem; font-family: 'Space Grotesk', sans-serif;">Color Palette</h3>
+                <div class="color-swatches">
+                    <div class="swatch">
+                        <div class="swatch-color" style="background: #00BFFF;"></div>
+                        <div class="swatch-label">Primary</div>
+                        <div class="swatch-value">#00BFFF</div>
+                    </div>
+                    <div class="swatch">
+                        <div class="swatch-color" style="background: #10B981;"></div>
+                        <div class="swatch-label">Success</div>
+                        <div class="swatch-value">#10B981</div>
+                    </div>
+                    <div class="swatch">
+                        <div class="swatch-color" style="background: #EF4444;"></div>
+                        <div class="swatch-label">Alert</div>
+                        <div class="swatch-value">#EF4444</div>
+                    </div>
+                    <div class="swatch">
+                        <div class="swatch-color" style="background: #1A1A1A;"></div>
+                        <div class="swatch-label">Text</div>
+                        <div class="swatch-value">#1A1A1A</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <span class="section-label">Impact</span>
+            <h2 class="section-title">Results & Outcomes</h2>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <div class="impact-metric orange">+61%</div>
+                    <div class="impact-label">User Satisfaction</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-metric">-30%</div>
+                    <div class="impact-label">Time to Decision</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-metric">95%</div>
+                    <div class="impact-label">Task Completion</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-metric">8.2/10</div>
+                    <div class="impact-label">Clarity Rating</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <span class="section-label">Reflection</span>
+            <h2 class="section-title">Key Learnings</h2>
+            <div class="learnings-list">
+                <ul>
+                    <li><strong>Visual hierarchy is everything.</strong> The total balance needed to be 3x larger than I initially designed. Users' eyes go there first, period.</li>
+                    <li><strong>Data visualization has purpose.</strong> Every chart should answer a specific question instantly. Decoration kills clarity.</li>
+                    <li><strong>Color carries meaning.</strong> Red/green for spending works because it's universally understood. Fighting mental models is a losing battle.</li>
+                    <li><strong>Less is genuinely more.</strong> I removed 40% of the features in v2 after testing. Users completed tasks faster and felt less overwhelmed.</li>
+                    <li><strong>Test with real data.</strong> Designs that work with "lorem ipsum" often fail with actual numbers. Always test with realistic content.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="next-project">
+            <h3>Want to see more work?</h3>
+            <p>Explore other case studies or get in touch to discuss your project</p>
+            <div class="btn-group">
+                <a href="index-redesigned.html#work" class="btn btn-primary">View All Projects</a>
+                <a href="mailto:itsshaif4u@gmail.com" class="btn btn-secondary">Contact Me</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Shaif Alam. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,8 +1,1014 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Redesigned Index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaif Alam — Product Designer</title>
+    <meta name="description" content="Product designer specializing in research-driven solutions, dashboard design, and cultural UX. Based in New Delhi.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=General+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Core Colors - Clean, No Gradients */
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --grey-100: #F5F5F5;
+            --grey-200: #E5E5E5;
+            --grey-400: #A3A3A3;
+            --grey-600: #525252;
+            --grey-900: #171717;
+            
+            /* Orange - Accent Only */
+            --orange: #FF4000;
+            --orange-light: #FF6B35;
+            
+            /* Blue - Minimal use */
+            --blue: #00BFFF;
+            --blue-dark: #0099CC;
+        }
+
+        body {
+            font-family: 'General Sans', -apple-system, system-ui, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography System */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        /* Navigation - Minimal, Professional */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--black);
+            text-decoration: none;
+            letter-spacing: -0.03em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--grey-600);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--black);
+        }
+
+        .nav-cta {
+            padding: 0.6rem 1.2rem;
+            background: var(--black);
+            color: var(--white);
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--grey-900);
+            transform: translateY(-1px);
+        }
+
+        /* Hero - Minimal, Direct */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 3rem 4rem;
+            background: var(--white);
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--grey-600);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-size: 5.5rem;
+            font-weight: 600;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+            max-width: 900px;
+            letter-spacing: -0.04em;
+        }
+
+        .hero-title .highlight {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0.2em;
+            left: 0;
+            right: 0;
+            height: 0.15em;
+            background: var(--orange);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero-description {
+            font-size: 1.4rem;
+            color: var(--grey-600);
+            max-width: 700px;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--grey-600);
+            font-weight: 500;
+        }
+
+        /* Project Section - THE FOCUS */
+        .section {
+            padding: 5rem 3rem;
+        }
+
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--grey-600);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--grey-600);
+            max-width: 700px;
+        }
+
+        /* Core Projects - Hero Treatment */
+        .projects-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-tier-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--grey-600);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .project-tier-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--grey-200);
+        }
+
+        /* Featured Project - Full Width Hero */
+        .project-featured {
+            background: var(--grey-100);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 5rem;
+            transition: transform 0.3s;
+        }
+
+        .project-featured:hover {
+            transform: translateY(-4px);
+        }
+
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 550px;
+        }
+
+        .featured-info {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-category {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+
+        .project-description {
+            font-size: 1.1rem;
+            color: var(--grey-600);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            color: var(--grey-600);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .tag {
+            padding: 0.4rem 0.9rem;
+            background: var(--white);
+            border: 1px solid var(--grey-200);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--grey-600);
+        }
+
+        .project-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--black);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            align-self: flex-start;
+        }
+
+        .project-cta:hover {
+            background: var(--grey-900);
+            transform: translateY(-2px);
+        }
+
+        .featured-visual {
+            background: var(--blue-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visual-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Secondary Core Projects - Side by Side */
+        .core-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border: 1px solid var(--grey-200);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--grey-400);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-visual {
+            width: 100%;
+            height: 320px;
+            background: var(--grey-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .card-visual.orange {
+            background: #FFF5F0;
+        }
+
+        .card-visual.blue {
+            background: #F0F9FF;
+        }
+
+        .card-visual-icon {
+            font-size: 5rem;
+            opacity: 0.4;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-category {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .card-description {
+            color: var(--grey-600);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-metric {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .card-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--black);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-link:hover {
+            color: var(--orange);
+        }
+
+        /* Supporting Projects - Compact Grid */
+        .supporting-projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .project-compact {
+            background: var(--white);
+            border: 1px solid var(--grey-200);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .project-compact:hover {
+            border-color: var(--grey-400);
+            transform: translateY(-2px);
+        }
+
+        .compact-visual {
+            width: 100%;
+            height: 160px;
+            background: var(--grey-100);
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            opacity: 0.4;
+        }
+
+        .compact-category {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--grey-600);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .compact-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .compact-description {
+            font-size: 0.85rem;
+            color: var(--grey-600);
+            line-height: 1.6;
+        }
+
+        /* About Section - Concise */
+        .about-section {
+            background: var(--black);
+            color: var(--white);
+            padding: 6rem 3rem;
+        }
+
+        .about-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .about-text p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--grey-400);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .about-link:hover {
+            transform: translateX(4px);
+        }
+
+        .about-skills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .skill-group h3 {
+            font-size: 0.75rem;
+            color: var(--grey-600);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .skill-item {
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section - Strong CTA */
+        .contact-section {
+            padding: 6rem 3rem;
+            background: var(--white);
+        }
+
+        .contact-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content h2 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-content p {
+            font-size: 1.3rem;
+            color: var(--grey-600);
+            margin-bottom: 3rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 1.2rem 2.5rem;
+            background: var(--black);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--grey-900);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            padding: 1.2rem 2.5rem;
+            background: transparent;
+            color: var(--black);
+            text-decoration: none;
+            border: 2px solid var(--black);
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--black);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Footer - Minimal */
+        footer {
+            padding: 3rem;
+            border-top: 1px solid var(--grey-200);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            color: var(--grey-600);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--grey-600);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--black);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .featured-content {
+                grid-template-columns: 1fr;
+            }
+
+            .core-projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .supporting-projects {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .supporting-projects {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>Welcome to the Redesigned Index Page</h1>
+    <nav>
+        <a href="#" class="logo">SHAIF ALAM</a>
+        <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <a href="mailto:itsshaif4u@gmail.com" class="nav-cta">Get in Touch</a>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Product Designer</span>
+            <h1 class="hero-title">Designing <span class="highlight">research-backed</span> solutions for complex product challenges</h1>
+            <p class="hero-description">
+                Specializing in dashboard design, user research, and cultural UX. Currently seeking opportunities to create meaningful digital experiences.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Core Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">11</span>
+                    <span class="stat-label">Total Designs</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1 Year</span>
+                    <span class="stat-label">Professional Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">Design Consistency</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="work">
+        <div class="section-header">
+            <span class="section-label">Selected Work</span>
+            <h2 class="section-title">Projects that solve real problems</h2>
+            <p class="section-description">Research-driven design solutions across dashboards, mobile apps, and UX analysis</p>
+        </div>
+
+        <div class="projects-container">
+            <!-- Tier 1: Core Projects -->
+            <div class="project-tier-label">Core Projects — Deep Case Studies</div>
+
+            <!-- Featured: Finance Pulse -->
+            <div class="project-featured">
+                <div class="featured-content">
+                    <div class="featured-info">
+                        <span class="project-category">Dashboard Design</span>
+                        <h3 class="project-title">Finance Pulse</h3>
+                        <p class="project-description">
+                            Personal financial management dashboard simplifying complex data through strategic information hierarchy and visual clarity. Increased user satisfaction by 61%.
+                        </p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Role</span>
+                                <span class="meta-value">UI/UX Designer</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Duration</span>
+                                <span class="meta-value">3 Weeks</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Type</span>
+                                <span class="meta-value">Web Dashboard</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">User Research</span>
+                            <span class="tag">Data Visualization</span>
+                            <span class="tag">Information Architecture</span>
+                            <span class="tag">Design System</span>
+                        </div>
+                        <a href="finance-pulse.html" class="project-cta">
+                            View Case Study →
+                        </a>
+                    </div>
+                    <div class="featured-visual">
+                        <div class="visual-placeholder">💰</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secondary Core: Nikahkaro + Figma Audit -->
+            <div class="core-projects-grid">
+                <div class="project-card">
+                    <div class="card-visual orange">
+                        <span class="card-visual-icon">💍</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category">Mobile App · Case Study</span>
+                        <h3 class="card-title">Nikahkaro</h3>
+                        <p class="card-description">
+                            Muslim matrimony app prioritizing trust, privacy, and cultural sensitivity. Deep user research with 6 participants revealing key insights about tradition and technology.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">User Research</span>
+                            <span class="tag">Cultural UX</span>
+                            <span class="tag">Mobile Design</span>
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-metric">+95% Form Completion</span>
+                            <a href="#" class="card-link">View Project →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-visual blue">
+                        <span class="card-visual-icon">🎯</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category">UX Analysis</span>
+                        <h3 class="card-title">Figma Heuristic Evaluation</h3>
+                        <p class="card-description">
+                            Comprehensive usability audit using Nielsen's 10 heuristics. Identified 15 violations with actionable redesign recommendations demonstrating UX principles mastery.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Heuristic Analysis</span>
+                            <span class="tag">UX Audit</span>
+                            <span class="tag">Redesign</span>
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-metric">15 Issues Found</span>
+                            <a href="#" class="card-link">View Analysis →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tier 2: Supporting Projects -->
+            <div class="project-tier-label" style="margin-top: 3rem;">Supporting Projects — UI Design & Development</div>
+
+            <div class="supporting-projects">
+                <div class="project-compact">
+                    <div class="compact-visual">📋</div>
+                    <span class="compact-category">Landing Page</span>
+                    <h4 class="compact-title">JobConnect</h4>
+                    <p class="compact-description">Job platform with clear information hierarchy and strong calls-to-action</p>
+                </div>
+
+                <div class="project-compact">
+                    <div class="compact-visual">🌐</div>
+                    <span class="compact-category">Corporate Website</span>
+                    <h4 class="compact-title">AdWaya Technologies</h4>
+                    <p class="compact-description">B2B website showcasing services with professional brand presence</p>
+                </div>
+
+                <div class="project-compact">
+                    <div class="compact-visual">🛍️</div>
+                    <span class="compact-category">E-commerce App</span>
+                    <h4 class="compact-title">Trend Junction</h4>
+                    <p class="compact-description">Fashion e-commerce with smooth checkout flow and product discovery</p>
+                </div>
+
+                <div class="project-compact">
+                    <div class="compact-visual">🎵</div>
+                    <span class="compact-category">App Redesign</span>
+                    <h4 class="compact-title">Spotify Redesign</h4>
+                    <p class="compact-description">Music app UI with enhanced micro-interactions and visual polish</p>
+                </div>
+
+                <div class="project-compact">
+                    <div class="compact-visual">🍔</div>
+                    <span class="compact-category">Landing Page</span>
+                    <h4 class="compact-title">Food Landing Page</h4>
+                    <p class="compact-description">Restaurant landing with parallax effects and visual storytelling</p>
+                </div>
+
+                <div class="project-compact">
+                    <div class="compact-visual">📦</div>
+                    <span class="compact-category">E-commerce Web</span>
+                    <h4 class="compact-title">ShopSmart</h4>
+                    <p class="compact-description">Gadget store with product showcase and conversion focus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Designing with empathy and systematic thinking</h2>
+                <p>
+                    I'm a product designer based in New Delhi, focused on solving complex problems through user research and data-driven design decisions. My approach combines structured UX methodology with clean visual execution.
+                </p>
+                <p>
+                    With 1 year of professional experience at FilipTech and deep portfolio work, I specialize in dashboard design, mobile UX, and design systems that scale.
+                </p>
+                <a href="about.html" class="about-link">More About Me →</a>
+            </div>
+
+            <div class="about-skills">
+                <div class="skill-group">
+                    <h3>Design Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">User Research & Testing</span>
+                        <span class="skill-item">Information Architecture</span>
+                        <span class="skill-item">Wireframing & Prototyping</span>
+                        <span class="skill-item">Visual Design</span>
+                        <span class="skill-item">Design Systems</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Tools & Methods</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Figma (Advanced)</span>
+                        <span class="skill-item">FigJam & Miro</span>
+                        <span class="skill-item">Design Thinking Process</span>
+                        <span class="skill-item">Heuristic Evaluation</span>
+                        <span class="skill-item">HTML/CSS Basics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <h2>Let's work together</h2>
+            <p>Open to UI/UX internships, junior designer roles, and freelance projects</p>
+            <div class="contact-buttons">
+                <a href="mailto:itsshaif4u@gmail.com" class="btn-primary">Email Me</a>
+                <a href="https://www.linkedin.com/in/shaifalam" class="btn-secondary" target="_blank">LinkedIn</a>
+                <a href="https://www.behance.net/shaifalam" class="btn-secondary" target="_blank">Behance</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">&copy; 2026 Shaif Alam. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="mailto:itsshaif4u@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/shaifalam" target="_blank">LinkedIn</a>
+                <a href="https://www.behance.net/shaifalam" target="_blank">Behance</a>
+                <a href="tel:+918541979820">Phone</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
